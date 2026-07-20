@@ -1,0 +1,75 @@
+<div class="form-group">
+    <label for="content_folder" class="form-label">Content folder:</label>
+    <input
+        type="text"
+        id="content_folder"
+        name="content_folder"
+        class="form-input"
+        placeholder="/home/pi/oracle"
+        required
+    >
+    <small class="form-text">
+        Each non-empty immediate subfolder has an equal chance of selection for
+        each triptych slot, regardless of how many supported images it contains.
+        Images placed directly in the content folder are treated as one folder.
+    </small>
+</div>
+
+<div class="form-group">
+    <label for="image_padding" class="form-label">Image padding (pixels):</label>
+    <input
+        type="number"
+        id="image_padding"
+        name="image_padding"
+        class="form-input"
+        value="40"
+        min="0"
+        step="1"
+        required
+    >
+</div>
+
+<div class="form-group">
+    <label for="background_color" class="form-label">Background color:</label>
+    <input
+        type="color"
+        id="background_color"
+        name="background_color"
+        class="color-picker"
+        value="#ffffff"
+    >
+</div>
+
+<div class="form-group">
+    <label for="three_image_chance" class="form-label">
+        Chance of showing three images (%):
+    </label>
+    <input
+        type="number"
+        id="three_image_chance"
+        name="three_image_chance"
+        class="form-input"
+        value="75"
+        min="0"
+        max="100"
+        step="1"
+        required
+    >
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!loadPluginSettings) {
+            return;
+        }
+
+        document.getElementById('content_folder').value =
+            pluginSettings.content_folder || '';
+        document.getElementById('image_padding').value =
+            pluginSettings.image_padding ?? 40;
+        document.getElementById('background_color').value =
+            pluginSettings.background_color || '#ffffff';
+        document.getElementById('three_image_chance').value =
+            pluginSettings.three_image_chance ?? 75;
+    });
+</script>
